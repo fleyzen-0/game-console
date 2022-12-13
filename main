@@ -1,0 +1,64 @@
+import random as r
+hp = 100
+coins = 30
+damage = 33
+
+def printParameters():
+    print("\033[96mДобро пожаловать, у тебя 100 жизней, 30 монет и 33 урона\033[0m")
+
+def initGame(initHP, initCOINS, initDAMAGE):
+    global hp
+    global coins
+    global damage
+
+    hp = initHP
+    coins = initCOINS
+    damage = initDAMAGE
+
+    print("Ты отправляешся в страшное путишествие, удачного путишествия")
+    PrintParameters()
+
+def GameLoop():
+    situation = r.randint(0, 7)
+    if situation == 0:
+        input("\033[92mМагазин\033[0m")
+    elif situation == 1:
+        input("\033[91mМонстр\033[0m")
+    elif situation == 2:
+       input("\033[93mМонстр\033[0m")
+    else:
+        input("\033[96mБлуждаю...\033[0m")
+
+
+
+
+
+while True:
+    GameLoop()
+
+    if hp <= 0:
+        if input("Ты хочешь начать с самого начала? (да/нет): ").lower() == "да":
+            initGame(3, 5, 1)
+    else:
+        break
+
+
+    def buy(cost):
+        global coins
+        if coins >= cost:
+            cois -= cost
+            printCOINS()
+            return True
+        print("У тебя недостаточно монет")
+        return False
+
+def phintHP():
+    print ("У тебя", hp, "жизней")
+
+def phintCOINS():
+    print ("У тебя", coins, "монет")
+
+
+def phintDAMAGE():
+    print ("У тебя", damage, "дамага")
+
